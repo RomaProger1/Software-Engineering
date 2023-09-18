@@ -105,7 +105,43 @@ void labaWork_1() {
      
      
      
-     
+    switch (task)
+    {
+    case 1:
+    {
+        double a = 0;
+        cout << "Введите число" << endl;
+        cin >> a;
+        cout << "Вы ввели число: " << a << endl;
+    }
+        break;
+    case 2:
+    {
+        double a = 0;
+        cout << "Введите число" << endl;
+        cin >> a;
+        cout << a << " - вот такое число Вы ввели" << endl;
+    }
+        break;
+    case 3:
+    {
+        int a = 1, b = 13, c = 49;
+        cout << a << " " << b << " " << c << " " << endl;
+    }
+        break;
+    case 4:
+    {
+        int a = 50, int b = 10;
+        cout << a << "\n" << b;
+    }
+        break;
+    case 5:
+    {
+        int x = 0, y = 0;
+        cout << "Введите числа x и y" << endl;
+        cin >> x;
+        cin >> y;
+        cout << "а) 7 см\nб) " << x << " 25\nв) " << x << " " << y;
      
      }
      default:
