@@ -3,7 +3,9 @@
 #include <cstdlib>
 #include <Windows.h>
 #include <cmath>
-
+#include <math.h>
+#include <stdio.h>
+#include "Laba_3_2.h"
 using namespace std;
 
 void labaWork_1() {
@@ -230,12 +232,17 @@ void labaWork_3() {
         break;
     case 2:
     {
-
+         MySpace::Laba();
     }
         break;
     case 3:
     {
-
+        double x = 0, y = 0, z = 0;
+        cout << "Введите значение X и Y" << endl;
+        cin >> x;
+        cin >> y;
+        z = x*x*x - 2.5 * x * y + 1.78 * x*x - 2.5 * y + 1;
+        cout << "Значение функции z = " << z << endl;
     }
         break;
     case 4:
