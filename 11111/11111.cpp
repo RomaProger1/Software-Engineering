@@ -194,7 +194,7 @@ void labaWork_3() {
 
     int task = 0; // для проверки номера задания
 
-    cout << "Введите номер задания (1 - 5)" << endl;
+    cout << "Введите номер задания (1 - 4)" << endl;
     cin >> task;
 
     if (task > 5 || task < 1)
@@ -247,7 +247,14 @@ void labaWork_3() {
         break;
     case 4:
     {
+        double a, b, c, p;
 
+        cout << "Введите длинну катета a = "; cin >> a; cout << "\n";
+        cout << "Введите длинну катета b = "; cin >> b; cout << "\n";
+        c = pow(a,0.5) + pow(b,0.5);
+        p = a + b + c;
+
+        cout << "Периметр равен = " << p << endl;
     }
         break;
     default:
@@ -255,16 +262,18 @@ void labaWork_3() {
     }
 }
 
+void labaWork_4() {
+
+}
+
 int main()
 {
     setlocale(LC_ALL, "ru");
 
-    
-
     int exit = 0; //  переменная для завершения программы или начать функцию заново
     int labN = 0;
     
-    cout << "Какую лабараторную работу запустить ? ( 1 - n )" << endl;
+    cout << "Какую лабораторную работу запустить ? ( 1 - n )" << endl;
     cin >> labN;
 
     if (labN < 1 || labN > 5)
@@ -298,7 +307,14 @@ int main()
     }
         break;
     case 3:
+    {
         labaWork_3();
+    }
+        break;
+    case 4: 
+    {
+        labaWork_4();
+    }
         break;
     default:
         break;
