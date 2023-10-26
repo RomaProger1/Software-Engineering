@@ -264,6 +264,110 @@ void labaWork_3() {
 
 void labaWork_4() {
 
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 4)" << endl;
+    cin >> task;
+
+    if (task > 3 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_1(); // Перезагрузка программы ' Лаба 1 '
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
+    switch (task)
+    {
+    case 1:
+    {
+        int a = 0, b = 0, c = 0;
+        cout << "Введите 3 целых числа" << endl;
+        cout << "Число a = "; cin >> a;
+        cout << "Число b = "; cin >> b;
+        cout << "Число c = "; cin >> c;
+        if (a > b && a > c)
+        {
+            cout << "Максимальное число a  = " << a << endl;
+        }
+        else if (b > a && b > c)
+        {
+            cout << "Максимальное число b  = " << b << endl;
+        }
+        else if (c > b && c > a)
+        {
+            cout << "Максимальное число c  = " << c << endl;
+        }
+
+        if (a < b && a < c)
+        {
+            cout << "Минимальное число a  = " << a << endl;
+        }
+        else if (b < a && b < c)
+        {
+            cout << "Минимальное число b  = " << b << endl;
+        }
+        else if (c < b && c < a)
+        {
+            cout << "Минимальное число c  = " << c << endl;
+        }
+    }
+        break;
+    case 2:
+    {
+        int  Birth_year = 0, Birth_Moth = 0 , Today_Moth = 0 , Today_year = 0 ;
+        int year_year = 0;
+
+        cout << "Введите свой месяц и год рождения " << endl;
+        cin >> Birth_Moth; cin >> Birth_year;
+        cout << "Введите нынешний месяц  и год рождения " << endl;
+        cin >> Today_Moth; cin >> Today_year;
+
+        year_year = Today_year - Birth_year; // Сколько лет человеку
+
+        if (Today_Moth < Birth_Moth)
+        {
+            year_year--;
+            
+        }
+        if (Birth_Moth == Today_Moth)
+        {
+            cout << "С днем рождения !\n Ваш возраст  = " << year_year << endl;
+
+            
+        }
+        cout << "Ваш возраст = " << year_year << " лет(года)" << endl;
+    }
+        break;
+    case 3:
+    {
+
+    }
+        break;
+    case 4:
+    {
+
+    }
+        break;
+    default:
+        break;
+    }
+
 }
 
 int main()
