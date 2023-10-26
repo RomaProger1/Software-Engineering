@@ -2,19 +2,20 @@
 #include <string>
 #include <cstdlib>
 #include <Windows.h>
-
+#include <cmath>
+#include <math.h>
+#include <stdio.h>
+#include "Laba_3_2.h"
 using namespace std;
 
-
-
 void labaWork_1() {
-    int exit = 0; //  переменная для завершения программы или начать функцию заново
-    int task_1 = 0; // для проверки номера задания
+
+    int task = 0; // для проверки номера задания
 
     cout << "Введите номер задания (1 - 3)" << endl;
-    cin >> task_1;
+    cin >> task;
 
-    if (task_1 > 3 || task_1 < 1)
+    if (task > 3 || task < 1)
     {
         int error = 0; // ошибка выбора задания
         cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
@@ -37,7 +38,7 @@ void labaWork_1() {
         }
     }
 
-    switch (task_1)
+    switch (task)
     {
      
      case 1:
@@ -67,22 +68,6 @@ void labaWork_1() {
              cout << "Периметр четырехугольника = " << ab << endl;
 
              Sleep(1000);
-             cout << "Завершить программу 1, запустить лабу №1 заново цифра 2" << endl;
-             cin >> exit;
-
-             if (exit == 1)
-             {
-                 abort;
-             }
-             else if (exit == 2)
-             {
-                 labaWork_1();
-             }
-             else if (exit < 1 || exit > 2)
-             {
-                 abort;
-             }
-
          }
          else if (square == 2)
          {
@@ -90,21 +75,74 @@ void labaWork_1() {
              cin >> ab;
              ab = ab * ab;
              cout << "Площадь четырехугольника  = " << ab << endl;
-
          }
      }
         break;
      case 3:
      {
-     
-     
-     
-     
-     
-     
-     
-     
-     
+
+         int celsius = 0;
+         double c = 0, f = 0, k = 0;
+         cout << "По какой шкале вычислить температуру ? " << endl;
+         cout << "По шкале Фаренгейта цифра 1\nПо шкале Кельвина цифра 2" << endl;
+         cin >> celsius;
+
+         if (celsius == 1)
+         {
+             cout << "Введите градусы Цельсия" << endl;
+             cin >> c;
+             f = c * 1.8 + 32;
+             cout << "По шкале Фаренгейта = " << f << endl;
+         }
+         else if (celsius == 2)
+         {
+             cout << "Введите градусы Цельсия" << endl;
+             cin >> c;
+             k = c + 273.15;
+             cout << "По шкале Кельвина = " << k << endl;
+         }
+         else
+         {
+             abort;
+         }
+     }
+     default:
+
+        break;
+    }
+
+}  
+
+void labaWork_2() {
+    
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 5)" << endl;
+    cin >> task;
+
+    if (task > 5 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_2(); // Перезагрузка программы ' Лаба 1 '
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
     switch (task)
     {
     case 1:
@@ -131,7 +169,7 @@ void labaWork_1() {
         break;
     case 4:
     {
-        int a = 50, int b = 10;
+        int a = 50,b = 10;
         cout << a << "\n" << b;
     }
         break;
@@ -141,11 +179,192 @@ void labaWork_1() {
         cout << "Введите числа x и y" << endl;
         cin >> x;
         cin >> y;
-        cout << "а) 7 см\nб) " << x << " 25\nв) " << x << " " << y;
-     
-     }
-     default:
+        cout << "а) 7 см\nб) " << x << " 25\nв) " << x << " " << y << endl;
 
+    }
+        break;
+    default:
+
+        break;
+    }
+
+}
+
+void labaWork_3() {
+
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 4)" << endl;
+    cin >> task;
+
+    if (task > 5 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_2(); // Перезагрузка программы ' Лаба 1 '
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
+    switch (task)
+    {
+    case 1:
+    {
+        const double E = 2.7182818284;
+        const double PI = 3.1415926535;
+
+        cout << "Число Эйлера = " << E << "\nЧисло Пи = " << PI << endl;
+    }
+        break;
+    case 2:
+    {
+         MySpace::Laba();
+    }
+        break;
+    case 3:
+    {
+        double x = 0, y = 0, z = 0;
+        cout << "Введите значение X и Y" << endl;
+        cin >> x;
+        cin >> y;
+        z = x*x*x - 2.5 * x * y + 1.78 * x*x - 2.5 * y + 1;
+        cout << "Значение функции z = " << z << endl;
+    }
+        break;
+    case 4:
+    {
+        double a, b, c, p;
+
+        cout << "Введите длинну катета a = "; cin >> a; cout << "\n";
+        cout << "Введите длинну катета b = "; cin >> b; cout << "\n";
+        c = pow(a,0.5) + pow(b,0.5);
+        p = a + b + c;
+
+        cout << "Периметр равен = " << p << endl;
+    }
+        break;
+    default:
+        break;
+    }
+}
+
+void labaWork_4() {
+
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 4)" << endl;
+    cin >> task;
+
+    if (task > 3 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_1(); // Перезагрузка программы ' Лаба 1 '
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
+    switch (task)
+    {
+    case 1:
+    {
+        int a = 0, b = 0, c = 0;
+        cout << "Введите 3 целых числа" << endl;
+        cout << "Число a = "; cin >> a;
+        cout << "Число b = "; cin >> b;
+        cout << "Число c = "; cin >> c;
+        if (a > b && a > c)
+        {
+            cout << "Максимальное число a  = " << a << endl;
+        }
+        else if (b > a && b > c)
+        {
+            cout << "Максимальное число b  = " << b << endl;
+        }
+        else if (c > b && c > a)
+        {
+            cout << "Максимальное число c  = " << c << endl;
+        }
+
+        if (a < b && a < c)
+        {
+            cout << "Минимальное число a  = " << a << endl;
+        }
+        else if (b < a && b < c)
+        {
+            cout << "Минимальное число b  = " << b << endl;
+        }
+        else if (c < b && c < a)
+        {
+            cout << "Минимальное число c  = " << c << endl;
+        }
+    }
+        break;
+    case 2:
+    {
+        int  Birth_year = 0, Birth_Moth = 0 , Today_Moth = 0 , Today_year = 0 ;
+        int year_year = 0;
+
+        cout << "Введите свой месяц и год рождения " << endl;
+        cin >> Birth_Moth; cin >> Birth_year;
+        cout << "Введите нынешний месяц  и год рождения " << endl;
+        cin >> Today_Moth; cin >> Today_year;
+
+        year_year = Today_year - Birth_year; // Сколько лет человеку
+
+        if (Today_Moth < Birth_Moth)
+        {
+            year_year--;
+            
+        }
+        if (Birth_Moth == Today_Moth)
+        {
+            cout << "С днем рождения !\n Ваш возраст  = " << year_year << endl;
+
+            
+        }
+        cout << "Ваш возраст = " << year_year << " лет(года)" << endl;
+    }
+        break;
+    case 3:
+    {
+
+    }
+        break;
+    case 4:
+    {
+
+    }
+        break;
+    default:
         break;
     }
 
@@ -155,6 +374,69 @@ int main()
 {
     setlocale(LC_ALL, "ru");
 
-    labaWork_1();
-}
+    int exit = 0; //  переменная для завершения программы или начать функцию заново
+    int labN = 0;
+    
+    cout << "Какую лабораторную работу запустить ? ( 1 - n )" << endl;
+    cin >> labN;
 
+    if (labN < 1 || labN > 5)
+    {
+        int a = 0;
+        cout << "Вы ввели неправильный номер лабораторной работы\n1 - Выбрать снова\n 2 - Закрыть программу " << endl;
+        if (a == 1)
+        {
+            main();
+        }
+        else if (a == 2)
+        {
+            abort;
+        }
+        else
+        {
+            abort;
+        }
+    }
+
+    switch (labN)
+    {
+    case 1:
+    {
+        labaWork_1();
+    }
+        break;
+    case 2:
+    {
+        labaWork_2();
+    }
+        break;
+    case 3:
+    {
+        labaWork_3();
+    }
+        break;
+    case 4: 
+    {
+        labaWork_4();
+    }
+        break;
+    default:
+        break;
+    }
+
+    cout << "Запустить программу заново цифра - 1\nЗавершить программу цифра 2" << endl;
+    cin >> exit;
+
+    if (exit == 1)
+    {
+        main();
+    }
+    else if (exit == 2)
+    {
+        abort;
+    }
+    else
+    {
+        abort;
+    }
+}
