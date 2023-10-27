@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <cstdlib>
+#include <stdlib.h>
 #include <Windows.h>
 #include <cmath>
 #include <math.h>
@@ -266,10 +267,10 @@ void labaWork_4() {
 
     int task = 0; // для проверки номера задания
 
-    cout << "Введите номер задания (1 - 4)" << endl;
+    cout << "Введите номер задания (1 - 5)" << endl;
     cin >> task;
 
-    if (task > 3 || task < 1)
+    if (task > 5 || task < 1)
     {
         int error = 0; // ошибка выбора задания
         cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
@@ -327,10 +328,10 @@ void labaWork_4() {
             cout << "Минимальное число c  = " << c << endl;
         }
     }
-        break;
+    break;
     case 2:
     {
-        int  Birth_year = 0, Birth_Moth = 0 , Today_Moth = 0 , Today_year = 0 ;
+        int  Birth_year = 0, Birth_Moth = 0, Today_Moth = 0, Today_year = 0;
         int year_year = 0;
 
         cout << "Введите свой месяц и год рождения " << endl;
@@ -343,31 +344,157 @@ void labaWork_4() {
         if (Today_Moth < Birth_Moth)
         {
             year_year--;
-            
+
         }
         if (Birth_Moth == Today_Moth)
         {
             cout << "С днем рождения !\n Ваш возраст  = " << year_year << endl;
 
-            
+
         }
         cout << "Ваш возраст = " << year_year << " лет(года)" << endl;
     }
-        break;
+    break;
     case 3:
     {
+        int k;
+
+        cout << "Введите номер дня в году (1 ≤ k ≤ 365):" << endl;
+        cin >> k;
+
+        if (k < 1 || k > 365)
+        {
+            cout << "Неверное значение k. Пожалуйста, введите число от 1 до 365." << endl;// Проверка 
+            abort;
+        }
+
+        int dayOfWeek = (k - 1) % 7;
+
+        if (dayOfWeek == 5 || dayOfWeek == 6)
+        {
+            cout << "Выходной день" << endl;
+        }
+        else
+        {
+            cout << "Рабочий день" << endl;
+        }
 
     }
-        break;
+    break;
     case 4:
     {
+        int KO;
+        cout << "Введите кол-во очков заработанных футбольной командой (0,1,3)" << endl;
+        cin >> KO;
 
+        if (KO < 0 || KO>3 || KO == 2)
+        {
+            cout << "Вы ввели неверное кол-во очков, команда может заработать только 0,1,3 очка" << endl;
+        }
+
+        switch (KO)
+        {
+        case 0:
+        {
+            cout << "Команда проиграла" << endl;
+        }
+        break;
+        case 1:
+        {
+            cout << "Ничья" << endl;
+        }
+        break;
+        case 3:
+        {
+            cout << "Команда победила" << endl;
+        }
+        break;
+        default:
+            break;
+        }
+    }
+    break;
+    case 5:
+    {
+        int motch;
+
+        cout << "Введите номер месяца 1-12" << endl;
+        cin >> motch;
+        if (motch < 1 || motch > 12)
+        {
+            cout << "Вы ввели неправильный номер, введите 1-12" << endl;
+        }
+
+        switch (motch)
+        {
+        case 1:
+        {
+            cout << "Январь" << endl;
+        }
+        break;
+        case 2:
+        {
+            cout << "Февраль" << endl;
+        }
+        break;
+        case 3:
+        {
+            cout << "Март" << endl;
+        }
+        break;
+        case 4:
+        {
+            cout << "Апрель" << endl;
+        }
+        break;
+        case 5:
+        {
+            cout << "Май" << endl;
+        }
+        break;
+        case 6:
+        {
+            cout << "Июнь" << endl;
+        }
+        break;
+        case 7:
+        {
+            cout << "Июль" << endl;
+        }
+        break;
+        case 8:
+        {
+            cout << "Август" << endl;
+        }
+        break;
+        case 9:
+        {
+            cout << "Сентябрь" << endl;
+        }
+        break;
+        case 10:
+        {
+            cout << "Октябрь" << endl;
+        }
+        break;
+        case 11:
+        {
+            cout << "Ноябрь" << endl;
+        }
+        break;
+        case 12:
+        {
+            cout << "Декабрь" << endl;
+        }
+        break;
+        default:
+            break;
+        }
     }
         break;
     default:
         break;
     }
-
 }
 
 int main()
