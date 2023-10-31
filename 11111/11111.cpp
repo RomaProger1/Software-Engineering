@@ -7,6 +7,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "Laba_3_2.h"
+#include "Laba_5_3.h"
 using namespace std;
 
 void labaWork_1() {
@@ -497,6 +498,116 @@ void labaWork_4() {
     }
 }
 
+void labaWork_5() {
+
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 5)" << endl;
+    cin >> task;
+
+    if (task > 5 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_1(); // Перезагрузка программы ' Лаба 1 '
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
+    switch (task)
+    {
+    case 1:
+    {
+        double Distance = 10, Workout = 0;
+        double TotalDistance = Distance;
+
+        cout << "Введите кол-во тренировок: ";
+        cin >> Workout;
+        cout << "1" << " День " << "10" << " км" << endl;
+        for (int day = 2; day < Workout + 1; day++)
+        {
+            Distance *= 1.1; // Увеличение пробега на 10%
+
+            TotalDistance += Distance; // Обновление суммарного пробега
+            
+            cout << day << " День " << Distance << " км" << endl;
+
+        }
+        cout << "Суммарный путь, который он пробежал:" << TotalDistance << " км" << endl;
+
+    }
+        break;
+    case 2:
+    {
+        double number = 1, sum = 0;
+
+        cout << "Введите число: ";
+        cin >> number;
+
+        for (int i = 1; i <= number; i++)
+        {
+            sum += i;
+        }
+        double average = sum / number;
+
+        cout << "Среднее арифметическое всех чисел от 1 до " << number << ": " << average << endl;
+      
+    }
+        break;
+    case 3:
+    {
+        Laba5_3::lab5();
+    }
+        break;
+    case 4:
+    {
+        int count = 0;
+        int number = 101;
+        while (count < 10)
+        {
+            if (number % 10 == 7 && number % 9 == 0) {
+                cout << number << endl;
+                count++;
+            }
+            number++;
+        }
+    }
+        break;
+    case 5:
+    {
+        int n;
+        cout << "Введите целое число n: ";
+        cin >> n;
+        
+        int number = 1;
+        while (number * number <=n)
+        {
+            number++;
+        }
+        cout << "Первое число, большее " << n << ", это " << number << endl;
+    }
+        break;
+    default:
+        break;
+    }
+
+
+}
+
 int main()
 {
     setlocale(LC_ALL, "ru");
@@ -545,6 +656,11 @@ int main()
     case 4: 
     {
         labaWork_4();
+    }
+        break;
+    case 5:
+    {
+        labaWork_5();
     }
         break;
     default:
