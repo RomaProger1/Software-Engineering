@@ -5,6 +5,11 @@
 using namespace std;
 
 bool godNumber(int number) {
+	if (number <= 0)//
+	{
+		cout << "0 и отрицательные числа не могут быть совершенными " << endl;
+		return false;
+	}//
 	int sum = 0;
 	for (int i = 1; i < number; i++)
 	{

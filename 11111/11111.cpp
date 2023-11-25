@@ -6,8 +6,13 @@
 #include <cmath>
 #include <math.h>
 #include <stdio.h>
+#include <array>
+#include <algorithm>
+#include <vector>
+#include <numeric>
 #include "Laba_3_2.h"
 #include "Laba_5_3.h"
+#include "Laba_6_5.h"
 using namespace std;
 
 void labaWork_1() {
@@ -208,7 +213,7 @@ void labaWork_3() {
         cin >> error;
         if (error == 1)
         {
-            labaWork_2(); // Перезагрузка программы ' Лаба 1 '
+            labaWork_3(); // Перезагрузка программы ' Лаба 1 '
         }
         else if (error == 2)
         {
@@ -280,7 +285,7 @@ void labaWork_4() {
         cin >> error;
         if (error == 1)
         {
-            labaWork_1(); // Перезагрузка программы ' Лаба 1 '
+            labaWork_4(); // Перезагрузка программы ' Лаба 1 '
         }
         else if (error == 2)
         {
@@ -360,7 +365,7 @@ void labaWork_4() {
     {
         int k;
 
-        cout << "Введите номер дня в году (1 ≤ k ≤ 365):" << endl;
+        cout << "Введите номер дня в году (1 <= k <= 365):" << endl;
         cin >> k;
 
         if (k < 1 || k > 365)
@@ -514,7 +519,7 @@ void labaWork_5() {
         cin >> error;
         if (error == 1)
         {
-            labaWork_1(); // Перезагрузка программы ' Лаба 1 '
+            labaWork_5(); // Перезагрузка программы ' Лаба 1 '
         }
         else if (error == 2)
         {
@@ -553,18 +558,29 @@ void labaWork_5() {
         break;
     case 2:
     {
-        double number = 1, sum = 0;
 
-        cout << "Введите число: ";
-        cin >> number;
-
-        for (int i = 1; i <= number; i++)
-        {
-            sum += i;
+        int sum_a = 0; // static_cast это оператор преобразования типов
+        for (int i = 1; i <= 1000; ++i) {
+            sum_a += i;
         }
-        double average = sum / number;
+        double average_a = static_cast<double>(sum_a) / 1000;
+        cout << "Среднее арифметическое чисел от 1 до 1000: " << average_a << std::endl;
 
-        cout << "Среднее арифметическое всех чисел от 1 до " << number << ": " << average << endl;
+        // б) среднее арифметическое всех целых чисел от 1 до n
+        int n;
+        cout << "Введите число n: ";
+        cin >> n;
+        if (n >= 1) {
+            int sum_b = 0;
+            for (int i = 1; i <= n; ++i) {
+                sum_b += i;
+            }
+            double average_b = static_cast<double>(sum_b) / n;
+            cout << "Среднее арифметическое чисел от 1 до " << n << ": " << average_b << std::endl;
+        }
+        else {
+            cout << "Число n должно быть больше или равно 1." << std::endl;
+        }
       
     }
         break;
@@ -576,7 +592,7 @@ void labaWork_5() {
     case 4:
     {
         int count = 0;
-        int number = 101;
+        int number = 101; 
         while (count < 10)
         {
             if (number % 10 == 7 && number % 9 == 0) {
@@ -592,13 +608,18 @@ void labaWork_5() {
         int n;
         cout << "Введите целое число n: ";
         cin >> n;
-        
-        int number = 1;
+        if (n < 0)
+        {
+            cout << "Число не может быть отрицательным" << endl;
+            
+        }
+        int number = static_cast<int>(sqrt(n));
         while (number * number <=n)
         {
             number++;
         }
-        cout << "Первое число, большее " << n << ", это " << number << endl;
+        int sqrtnumber = number * number;
+        cout << "Первое число, большее " << n << ", это " << number << " или " << number << "^2 = " << sqrtnumber << endl;
     }
         break;
     default:
@@ -608,32 +629,218 @@ void labaWork_5() {
 
 }
 
+void labaWork_6() {
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 5)" << endl;
+    cin >> task;
+
+    if (task > 5 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_6(); // Перезагрузка программы 
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
+    switch (task)
+    {
+    case 1:
+    {
+        array<int, 3> arr; // Нужно объявить include array
+        
+        cout << "Введите 3 числа" << endl;
+
+        for (auto& el : arr) { // auto позволяет компилятору автоматически определить тип элемента, по которому происходит итерация
+            cin >> el;
+            if (el <= 0) {
+                cout << "Число должно быть положительным и больше нуля." << endl;
+                return; // Завершаем программу
+            }
+        }
+
+        for (const auto& el : arr) {
+            if (el % 2 == 0) {
+                if (el >= 10) {
+                    cout << "Четное двухзначное число: " << el << endl;
+                }
+                else { // el < 10 уже гарантировано, так как el > 0
+                    cout << "Четное однозначное число: " << el << endl;
+                }
+            }
+        }
+
+        for (const auto& el : arr) {
+            if (el % 2 != 0) {
+                if (el >= 10) {
+                    cout << "Нечетное двухзначное число: " << el << endl;
+                }
+                else { // el < 10 уже гарантировано, так как el > 0
+                    cout << "Нечетное однозначное число: " << el << endl;
+                }
+            }
+        }
+    }
+        break;
+    case 2:
+    {
+        int n;
+        cout << "Введите количество элементов массива: ";
+        cin >> n;
+
+        vector<int> arr(n);
+        cout << "Введите элементы массива: ";
+        for (int i = 0; i < n; ++i) {
+            cin >> arr[i];
+        }
+
+        int minimalelement = *min_element(arr.begin(), arr.end());
+        int maxsimumelement = *max_element(arr.begin(), arr.end());
+        double average = (minimalelement + maxsimumelement) / 2.0;
+
+        cout << "Минимальное число: " << minimalelement << endl;
+        cout << "Максимальное число: " << maxsimumelement << endl;
+        
+        vector<int> indices;
+        for (int i = 0; i < n; ++i) {
+            if (arr[i] > average) {
+                indices.push_back(i);
+            }
+        }
+
+        cout << "Количество элементов, значение которых больше среднего арифметического: " << indices.size() << endl;
+        cout << "Порядковые номера элементов больше среднего: ";
+        for (int index : indices) {
+            cout << index << " ";
+        }
+        cout << endl;
+
+        // Вывод порядковых номеров минимального и максимального элементов
+        auto minPos = find(arr.begin(), arr.end(), minimalelement) - arr.begin();
+        auto maxPos = find(arr.begin(), arr.end(), maxsimumelement) - arr.begin();
+        cout << "Порядковый номер минимального числа: " << minPos << endl;
+        cout << "Порядковый номер максимального числа: " << maxPos << endl;
+    }
+    break;
+    case 3:
+    {
+        int n;
+        cout << "Введите количество элементов массива: ";
+        cin >> n;
+
+        vector<double> arr(n);
+        cout << "Введите элементы массива: ";
+        for (int i = 0; i < n; ++i) {
+            cin >> arr[i];
+        }
+
+        double sum = accumulate(arr.begin(), arr.end(), 0.0); // accumulate функция для вычисления суммы эл-ов
+        double average = sum / n;
+
+        for (double& value : arr) {
+            if (value > 0) {
+                value += 1;
+            }
+            else if (value < 0) {
+                value -= 1;
+            }
+            else {
+                value = average;
+            }
+        }
+
+        // Вывод измененного массива
+        for (const double& value : arr) {
+            cout << value << " ";
+        }
+        cout << endl;
+
+    }
+    break;
+    case 4:
+    {
+        int rows, cols;
+        cout << "Введите количество строк и столбцов массива: ";
+        cin >> rows >> cols;
+
+        vector<vector<int>> matrix(rows, vector<int>(cols));
+        cout << "Введите элементы массива:" << endl;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                cin >> matrix[i][j];
+            }
+        }
+
+        int maxElement = INT_MIN, minElement = INT_MAX;
+        pair<int, int> maxCoords, minCoords;
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                if (matrix[i][j] > maxElement) {
+                    maxElement = matrix[i][j];
+                    maxCoords = { i, j };
+                }
+                else if (matrix[i][j] == maxElement && (i < maxCoords.first || (i == maxCoords.first && j < maxCoords.second))) {
+                    maxCoords = { i, j };
+                }
+
+                if (matrix[i][j] < minElement) {
+                    minElement = matrix[i][j];
+                    minCoords = { i, j };
+                }
+                else if (matrix[i][j] == minElement && (i > minCoords.first || (i == minCoords.first && j > minCoords.second))) {
+                    minCoords = { i, j };
+                }
+            }
+        }
+
+        cout << "Максимальный элемент: " << maxElement << " Координаты: (" << maxCoords.first << ", " << maxCoords.second << ")" << endl;
+        cout << "Минимальный элемент: " << minElement << " Координаты: (" << minCoords.first << ", " << minCoords.second << ")" << endl;
+
+    }
+    break;
+    case 5:
+    {
+        laba_6_5::laba6();
+    }
+    break;
+    default:
+        break;
+    }
+}
+
 int main()
 {
     setlocale(LC_ALL, "ru");
 
     int exit = 0; //  переменная для завершения программы или начать функцию заново
     int labN = 0;
-    
+
     cout << "Какую лабораторную работу запустить ? ( 1 - n )" << endl;
     cin >> labN;
 
-    if (labN < 1 || labN > 5)
+    if (labN < 1 || labN > 6)
     {
-        int a = 0;
-        cout << "Вы ввели неправильный номер лабораторной работы\n1 - Выбрать снова\n 2 - Закрыть программу " << endl;
-        if (a == 1)
-        {
-            main();
-        }
-        else if (a == 2)
-        {
-            abort;
-        }
-        else
-        {
-            abort;
-        }
+
+        cout << "Вы ввели неправильный номер лабораторной работы";
+
+        abort;
+
     }
 
     switch (labN)
@@ -642,27 +849,32 @@ int main()
     {
         labaWork_1();
     }
-        break;
+    break;
     case 2:
     {
         labaWork_2();
     }
-        break;
+    break;
     case 3:
     {
         labaWork_3();
     }
-        break;
-    case 4: 
+    break;
+    case 4:
     {
         labaWork_4();
     }
-        break;
+    break;
     case 5:
     {
         labaWork_5();
     }
-        break;
+    break;
+    case 6:
+    {
+        labaWork_6();
+    }
+    break;
     default:
         break;
     }
@@ -682,4 +894,5 @@ int main()
     {
         abort;
     }
+    return 0;
 }
