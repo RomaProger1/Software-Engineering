@@ -130,7 +130,10 @@
     <ClCompile Include="11111.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Check.h" />
     <ClInclude Include="Laba_3_2.h" />
+    <ClInclude Include="Laba_5_3.h" />
+    <ClInclude Include="Laba_6_5.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
