@@ -10,9 +10,14 @@
 #include <algorithm>
 #include <vector>
 #include <numeric>
+#include <regex>
+#include <sstream>
+#include <unordered_set>
+#include <unordered_map>
 #include "Laba_3_2.h"
 #include "Laba_5_3.h"
 #include "Laba_6_5.h"
+#include "Laba_7_4.h"
 using namespace std;
 
 void labaWork_1() {
@@ -824,6 +829,150 @@ void labaWork_6() {
     }
 }
 
+void labaWork_7() {
+
+    int task = 0; // для проверки номера задания
+
+    cout << "Введите номер задания (1 - 5)" << endl;
+    cin >> task;
+
+    if (task > 5 || task < 1)
+    {
+        int error = 0; // ошибка выбора задания
+        cout << "Вы ввели неправильный номер задания" << endl; // Ошибка ввода 'Номер задания ЛАБА 1'
+        Sleep(2000);
+        cout << "Ввести номер задания снова, нажмите цифру 1 или завершите работу программы, нажав цифру 2" << endl;
+        cin >> error;
+        if (error == 1)
+        {
+            labaWork_7(); // Перезагрузка программы 
+        }
+        else if (error == 2)
+        {
+            abort;
+        }
+        else
+        {
+            cout << "Хватит шуток !!!" << endl;
+            Sleep(2000);
+            abort; // Завершение программы
+        }
+    }
+
+    switch (task)
+    {
+    case 1:
+    {
+        string w = "алигортм";
+
+        swap(w[5], w[2]);
+        swap(w[2], w[3]);
+        swap(w[3], w[4]);
+
+        cout << w << endl;
+    }
+    break;
+    case 2:
+    {
+        string sentence;
+        char searchChar;
+        int count = 0;
+
+        // Получение предложения и символа для поиска
+        cout << "Введите предложение: ";
+        cin >> sentence;
+        cout << "Введите символ для поиска: ";
+        cin >> searchChar;
+
+        // Подсчет количества вхождений символа
+        for (char ch : sentence) {
+            if (ch == searchChar) {
+                ++count;
+            }
+        }
+
+        // Вывод результата
+        cout << "Количество вхождений символа '" << searchChar << "': " << count << endl;
+    }
+    break;
+    case 3:
+    {
+
+        string word;
+        unordered_map <char, int> frequency; // ассоциативный массив
+
+        
+        cout << "Введите слово: ";
+        cin >> word;
+
+        // Подсчет вхождений каждой буквы
+        for (char ch : word) {
+            ++frequency[ch];
+        }
+
+        // Вывод букв, встречающихся один раз
+        for (char ch : word) {
+            if (frequency[ch] == 1) {
+                cout << ch;
+            }
+        }
+        cout << endl;
+    }
+    break;
+    case 4:
+    {
+        laba_7_4::laba7();
+    }
+    break;
+    case 5:
+    {
+        SetConsoleCP(1251);
+        SetConsoleOutputCP(1251);
+
+        cout << "Введите строку:\n";
+
+        string str;
+
+        // Ensure that cin ignores any characters left in the input buffer.
+        if (cin.peek() == '\n') cin.ignore();
+
+        getline(cin, str);
+
+        // Convert to lowercase
+        transform(str.begin(), str.end(), str.begin(), ::tolower);
+
+        // Split string into words
+        istringstream iss(str);
+        vector<string> words;
+        string word;
+        while (iss >> word) {
+            words.push_back(word);
+        }
+
+        int errorCount = 0;
+       
+        for (const auto& w : words) {
+            cout << w << endl;
+
+            if (w.find("жи") != string::npos || w.find("ши") != string::npos) {
+                cout << "Правильно!\n";
+            }
+            else if (w.find("жы") != string::npos || w.find("шы") != string::npos) {
+                cout << "Неправильно! Жи/Ши пиши с буквой 'и'\n";
+                ++errorCount;
+            }
+            else {
+                cout << "Для этого слова правило не применяется\n";
+            }
+        }
+        cout << "Количество ошибок: " << errorCount << endl;
+
+    }
+    break;
+    default:
+        break;
+    }
+}
 int main()
 {
     setlocale(LC_ALL, "ru");
@@ -834,7 +983,7 @@ int main()
     cout << "Какую лабораторную работу запустить ? ( 1 - n )" << endl;
     cin >> labN;
 
-    if (labN < 1 || labN > 6)
+    if (labN < 1 || labN > 7)
     {
 
         cout << "Вы ввели неправильный номер лабораторной работы";
@@ -873,6 +1022,10 @@ int main()
     case 6:
     {
         labaWork_6();
+    }
+    case 7:
+    {
+        labaWork_7();
     }
     break;
     default:
