@@ -569,7 +569,7 @@ void labaWork_5() {
             sum_a += i;
         }
         double average_a = static_cast<double>(sum_a) / 1000;
-        cout << "Среднее арифметическое чисел от 1 до 1000: " << average_a << std::endl;
+        cout << "Среднее арифметическое чисел от 1 до 1000: " << average_a << endl;
 
         // б) среднее арифметическое всех целых чисел от 1 до n
         int n;
@@ -581,10 +581,10 @@ void labaWork_5() {
                 sum_b += i;
             }
             double average_b = static_cast<double>(sum_b) / n;
-            cout << "Среднее арифметическое чисел от 1 до " << n << ": " << average_b << std::endl;
+            cout << "Среднее арифметическое чисел от 1 до " << n << ": " << average_b << endl;
         }
         else {
-            cout << "Число n должно быть больше или равно 1." << std::endl;
+            cout << "Число n должно быть больше или равно 1." << endl;
         }
       
     }
@@ -667,39 +667,31 @@ void labaWork_6() {
     {
     case 1:
     {
-        array<int, 3> arr; // Нужно объявить include array
-        
-        cout << "Введите 3 числа" << endl;
+array<int, 3> arr;
+    cout << "Введите 3 числа" << endl;
 
-        for (auto& el : arr) { // auto позволяет компилятору автоматически определить тип элемента, по которому происходит итерация
-            cin >> el;
-            if (el <= 0) {
-                cout << "Число должно быть положительным и больше нуля." << endl;
-                return; // Завершаем программу
+    for (auto& el : arr) {
+        cin >> el;
+    }
+
+    for (const auto& el : arr) {
+        string sign = (el < 0) ? "отрицательное " : "";
+        if (el % 2 == 0) {
+            if (el >= 10 || el <= -10) {
+                cout << "Четное двухзначное " << sign << "число: " << el << endl;
+            } else if (el == 0) {
+                cout << "Ноль: " << el << endl;
+            } else {
+                cout << "Четное однозначное " << sign << "число: " << el << endl;
+            }
+        } else {
+            if (el >= 10 || el <= -10) {
+                cout << "Нечетное двухзначное " << sign << "число: " << el << endl;
+            } else {
+                cout << "Нечетное однозначное " << sign << "число: " << el << endl;
             }
         }
-
-        for (const auto& el : arr) {
-            if (el % 2 == 0) {
-                if (el >= 10) {
-                    cout << "Четное двухзначное число: " << el << endl;
-                }
-                else { // el < 10 уже гарантировано, так как el > 0
-                    cout << "Четное однозначное число: " << el << endl;
-                }
-            }
-        }
-
-        for (const auto& el : arr) {
-            if (el % 2 != 0) {
-                if (el >= 10) {
-                    cout << "Нечетное двухзначное число: " << el << endl;
-                }
-                else { // el < 10 уже гарантировано, так как el > 0
-                    cout << "Нечетное однозначное число: " << el << endl;
-                }
-            }
-        }
+    }
     }
         break;
     case 2:
@@ -921,7 +913,7 @@ void labaWork_7() {
     break;
     case 4:
     {
-        laba_7_4::laba7();
+        laba_7_4::main1();
     }
     break;
     case 5:
